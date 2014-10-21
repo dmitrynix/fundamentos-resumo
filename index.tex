@@ -1,0 +1,582 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuges]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+
+\usepackage{multicol} % split into columns
+
+\author{Dmitry Rocha}
+\title{Resumo Capítulos}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+% From: http://www.wikihow.com/Write-a-Resume-in-LaTeX .
+\topmargin=0in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=0in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=9in %How tall the text body is allowed to be on each page
+
+\begin{document}
+
+\newcommand{\defi}{Def. }
+\newcommand{\prop}{P}
+\newcommand{\teor}{T}
+\newcommand{\coro}{C}
+\newcommand{\lema}{L}
+\newcommand{\obse}{Obs.}
+
+\maketitle
+
+\pagenumbering{arabic}
+
+\noindent{\Large \bf 1 - Relações e Funções}
+
+\noindent{\Large \bf Relações}
+
+\begin{description}
+  \item[\defi 2] Seja $A \neq \varnothing$ e $B \neq \varnothing$. Uma relação é
+    qualquer subconjunto $R$ de $A \times B$.
+  \item[\defi 3] Seja $R$ uma relação sobre $A$ e $B \neq \varnothing$ e $B \subset
+    A$. A \emph{relação induzida} $R_B := R \cup (B\times B)$. $R$ é
+    prolongamento de $R_B$.
+
+    Dados $a,b \in B$, $aR_B b \iff aRb$
+
+  \item[\defi 4 (Rel. de igualdade)]
+
+    $\Delta _A = \{ (a, a) | a \in A\}$ ou,
+    $\Delta _A = \{(x, y) \in A^2 | x = y\}$
+
+  \item[\defi 5 (Rel. Inversa)] Seja $R$ rel. sobre $A$. A rel. $R^{-1}$:
+
+    $aR^{-1} \iff bRa$ ou,
+    $(a, b) \in R^{-1} \iff (b,a) \in R$
+
+  \item[\defi 6] Seja $R$ uma rel. em $A$ e $A\neq \varnothing$. $R$ é:
+    \begin{itemize}
+      \item \emph{reflexiva} $\iff \forall a \in A$, $aRa$ (ou seja: $\Delta _A
+        \subseteq R$)
+      \item \emph{simétrica} $\iff$ Dados $a, b \in A$, $aRb \to bRa$ (ou seja:
+        $R=R^{-1}$)
+      \item \emph{anti-simétrica} $\iff$ Dados $a, b \in A$, $aRb$ e $bRa \to a
+        = b$ (ou seja: $R \cap R^{-1}$)
+      \item \emph{transitiva} $\iff$ Dados $a, b \in A$, $aRb$ e $bRc \to aRc$.
+    \end{itemize}
+\end{description}
+
+\noindent{\Large \bf 1.2 Rel. de Equiv.}
+
+\begin{description}
+  \item[\defi 7 (Rel. de Equiv.)] É reflexiva, simétrica e transitiva.
+  \item[\defi 8 a é divisor de b] se, e somente se existir $c$ tal que $b = ac$.  \\
+    Notação: $a|b$
+  \item[\defi 9 (congruência módulo)]
+    $aRb \iff \exists k | a-b=km$ ou,
+    $aRb \iff \exists k$ t. q. $m|(a-b)$.
+
+  \item[\defi 10 (Classe de equivalência módulo R)] $\overline{a} = \{ x \in A | a
+    \equiv x mod R\}$
+  \item[\defi (Conjunto quociente)] $A/R = \{ \overline{a} | a \in A \}$
+  \item[\defi 11 (Partição)]:
+    \begin{itemize}
+      \item Dados $X, Y \in P$, ou $X=Y$ ou $X\cap Y= \varnothing$
+      \item $\bigcup\limits_{X \in P}X = A$;
+    \end{itemize}
+\end{description}
+
+\noindent{\Large \bf 1.3 Rel. de Ordem}
+
+\begin{description}
+  \item[\defi 12 (Rel. de Ordem)] reflexiva, anti-simétrica e transitiva.
+  \item[\defi 13 (Ordem Total)] ordem $R$ sobre $A$:
+    $\forall x,y \in A$, $xRy$ ou $yRx$
+  \item[\prop 1.3.6] A relação $<$ é \emph{ordem estrita} sobre $A$:
+    $\forall a,b \in A$, $a < b \iff a \leq b$ e $a\neq b$
+
+    \begin{itemize}
+      \item $\forall a \in A$, $a \nleq a$;
+      \item $\forall a,b \in A$, se $a<b$ então $b\nleq a$;
+      \item $<$ é transitiva.
+    \end{itemize}
+  \item[\defi 15] Seja $(A, \le)$ um conj. ordenado o subconjunto B:
+    \begin{itemize}
+      \item \emph{limitado inferiormente}: $\exists a \in A$ tal que, $\forall x
+        \in B$, $a \leq x$;
+      \item \emph{limitado superiormente}: $\exists a \in A$ tal que, $\forall x
+        \in B$, $x \leq a$;
+      \item \emph{mínimo}: $m \in A$, $m \in B$ é limite inferior;
+      \item \emph{máximo}: $m \in A$, $m \in B$ é limite superior.
+    \end{itemize}
+
+  \item[\defi 16] Seja $(A, \leq)$ um conj. totalmente ordenado $A$ é bem
+    ordenado por $\leq$ se, e somente se todo subconj. de $A$ tem mínimo.
+\end{description}
+
+\noindent{\Large \bf Função e Aplicação}
+
+\begin{description}
+  \item[\defi 19] Seja $A$ e $B$ conjuntos:
+    \begin{itemize}
+      \item $\forall x \in A \exists y \in B | (x,y) \in f$ (ou seja $xfy$)
+      \item se $(x,y) \in f$ e $(x, y') \in f$ então $y=y'$
+    \end{itemize}
+  \item[\defi 20] Seja $A$ e $B$ conjuntos e $X \subseteq Y$ e $Y \subseteq B$
+    \begin{description}
+      \item[(i)] Uma função $f$ de $A$ em $B$: \\
+        $f: A \to B$ ou $A \xrightarrow[]{f} B$ ou $x \longmapsto f(x) (x \in A)$
+      \item[(ii)] $A$ é \emph{domínio}; \\
+        $B$ é \emph{contradomínio}; \\
+        $f(A) = \{ f(x)
+        | x \in A \} = R$ é \emph{imagem}.
+      \item[(iv)] \emph{sobrejetora}: $f(A) = B$; \\
+        \emph{injetora}: dados $x_1 , x_2 \in A, x_1 \neq x_2 \to f(x_1 ) \neq f(x_2 )$ ou
+        $f(x_1 ) = f(x_2 ) \to x_1 = x_2$;
+    \end{description}
+\end{description}
+
+\noindent{\Large \bf 2 Números Naturais - $\N$}
+
+\noindent{\Large \bf 2.1. Operações com Monóides}
+
+\begin{description}
+  \item[\defi 23] Operação em $A$: aplicação $A \times A$.
+  \item[\defi 24] Seja $*$ uma operação sobre $A$ e $B \subseteq A$ e $B \neq
+    \varnothing$. $B$ é fechado em relação a operação $*$ se, e somente se $*$ é
+    operação sobre $B$.
+  \item[\defi 25] Seja $A \neq \varnothing$ e $*$ uma operação sobre $A$. $(A, *)$ é
+    monóide:
+    \begin{description}
+      \item[(associativa)]: $(a*b)*c = a*(b*c)$ (semigrupo);
+      \item[(el. neutro)]: $a*e=a=e*a$, $\forall a \in A$ (monóide);
+      \item[(comutatividade)] $a*b=b*a$ (monóide comutativo);
+    \end{description}
+  \item[\defi 26 (El. simetrizável ou inversível)] Seja $(A, *)$, conjunto com
+    el. neutro e $*$ uma op. sobre $A$. O el. $a$ é inversível quando
+    existe: \\
+    $a' \in A$: $a*a' = e = a' * a$. \\
+    Notação: Conj. de el. simetrizável de $U_* (A)$.
+  \item[\teor 2.1.16] Seja $(A, *)$ monóide:
+    \begin{description}
+      \item[(P1)] $U_* (A)$ é fechado para operação $*$: Se $a,b \in U_* (A)$,
+        então $a*b \in U_* (A)$ e $(a*b)' = b' * a'$;
+      \item[(P2)] $U_* (A)$ é monóide;
+      \item[(P3)] O simétrico de um el. simetrizável é único \\
+        $\forall a \in U_* (A) \exists !a'$ tal que $a*a' = e = a' *a$
+      \item[(P4)]
+    \end{description}
+  \item[\defi 27 (El. regular)] Seja $(A, *)$ um semigrupo:
+    \begin{itemize}
+      \item $a \in A$ é el. regular à esquerda para op. $*$: \\
+        $\forall x,y \in A$, $a*x = a*y \to x=y$
+      \item $a \in A$ é el. regular à direita para op. $*$: \\
+        $\forall x,y \in A$, $x*a = y*a \to x=y$
+    \end{itemize}
+\end{description}
+
+\noindent{\Large \bf 2.2 Monóides Ordenados}
+
+Seja $(A, +)$ um monóide comutativo com operação $+$.
+
+\begin{description}
+  \item[\defi 28] Seja $\leq$ uma ordem sobre $A$. $+$ e $\leq$ são compatíveis:
+    \\
+    Dados $x,y,z \in A$, $x \leq y \to x+z \leq y+z$. \\
+    Notação: $(A, +, \leq)$.
+  \item[\teor 2.2.2] Num monóide ordenado $(A, +, \leq)$, vale:
+  \begin{description}
+    \item[(a)] $a \leq b$ e $c \leq d \to a+c \leq b+d$;
+    \item[(b)] Se $c$ é regular, então $a < b \to a+c<b+c$;
+    \item[(c)] Se $a+c<b+c$, então $a<b$;
+  \end{description}
+\item[\teor 2.2.3] Num monóide ordenado $(A, +, \leq)$, vale:
+  \begin{description}
+    \item[(a)] Se $b\in U_+ (A)$ então, $a<cb \iff a-b < 0$;
+    \item[(b)] Se $a,b \in U_+ (A)$ então $a<b \iff -b< -a$;
+    \item[(c)] Se $a \in U_+ (A)$ então, $a<a \iff -a <0$;
+  \end{description}
+\item[\defi 29] Seja $(A, +, \leq)$ e $(B, +, \leq)$ monóides ordenados. A
+  aplicação $f: A \to B$ é isomorfismo de $(A, +, \leq)$ em $(B, +, \leq)$:
+  \begin{description}
+    \item[(a)] $f(a+b) = f(a) + f(b), \forall a,b \in A$;
+    \item[(b)] $f$ é bijetora; \\
+      Se além disso:
+    \item[(c)] $\forall a,b \in A$, $a \leq b \iff f(a) \leq f(b)$ é
+      isomorfismo ordenado de $(A, +, \leq)$ em $(B, +, \leq)$.
+  \end{description}
+\end{description}
+
+\noindent{\Large \bf 2.3 Construção do conjunto dos números naturais}
+
+Seja $(N, +, \leq)$ um semigrupo comutativo totalmente ordenado.
+
+\begin{description}
+  \item[Axiomas]
+    \begin{description}
+      \item[(N1)] $\exists a,b \in N$ tal que $a \neq b$ (ou seja, $N$ não é unitário);
+      \item[(N2)] $\forall x \in N$ é regular para operação $+$ (ou seja: \emph{LCA});
+      \item[(N3)] Dados $a,b \in N$, se $b\leq a$, então $\exists c \in N$ tal que:
+        $a=b+c$;
+      \item[(N4)] $N$ é bem ordenado por $\leq$ (ou seja: todo subconjunto não vazio
+        de $N$ tem mínimo);
+    \end{description}
+
+  \item[\teor 2.3.2] $N$ satisfaz:
+  \begin{description}
+    \item[(P1) (recíproca de N3)] Se $a,b,c \in N$ tal que $b+c=a$, então $b\leq
+      a$;
+    \item[(P2)] Dados $a,b \in N$, $b<a \iff \exists !c \neq 0$ tal que, $a =
+      b+c$;
+    \item[(P3)] Dados $a,b,c \in N$, $b<a \iff b+c<a+c$;
+    \item[(P4)] Se $a,b\in N$ e se $b\leq a$, então $\exists ! c\in N$ tal que
+      $b+c=a$;
+  \end{description}
+\item[\teor 2.3.3] Dados $n,a,b \in N$, vale:
+  \begin{description}
+    \item[(i)] $n<n+1$;
+    \item[(ii)] se $n\neq 0$, então $n-1<n$;
+    \item[(iii)] $a<b \iff a+1\leq b$;
+  \end{description}
+\end{description}
+
+\noindent{\Large \bf 2.4 Multiplicação, múltiplos e potências em $\N$}
+
+\begin{description}
+  \item[\defi 30] A operação $\times$ (multiplicação) tem os seguintes axiomas:
+    \begin{description}
+      \begin{multicols}{2}
+        \item[(M1)] $\forall a \in \N$, $a\times 0=0$;
+        \item[(M2)] $\forall a,b \in \N$, $a \times (b+1) = a\times b+a$;
+      \end{multicols}
+    \end{description}
+  \item[\teor 2.4.1] A operação $\times$ (multiplicação) tem as propriedades:
+    \begin{enumerate}
+      \item $0\times n=0=n\times 0$, $\forall n \in \N$
+      \item $1=min \N^*$ é el. neutro;
+      \item Distributividade;
+      \item $(\N, \times)$ é monóide comutativo;
+      \item Se $a,b \in \N$ tal que $a\times b=0$, então $a=0$ ou $b=0$;
+      \item Dados $a,b,c \in \N$ se $a<b$ e $a<c$ então $a\times
+        c<b\times c$;
+    \end{enumerate}
+  \item[\defi 32] A operação $\textasciicircum$ (potenciação) tem os seguintes axiomas:
+    \begin{description}
+      \begin{multicols}{2}
+        \item[(i)] $a^0 =1$;
+        \item[(ii)] $a^{n+1} = a^n \times a$;
+      \end{multicols}
+    \end{description}
+  \item[\teor 2.4.4] Dados quaisquer $a,m,n \in \N$:
+    \begin{enumerate}
+      \begin{multicols}{3}
+        \item $a^{m+n} = a^m \times a^n$;
+        \item $a^{mn} = (a^m )^n$;
+        \item $(ab)^n = b^n \times a^n$;
+        \end{multicols}
+    \end{enumerate}
+  \item[\teor 2.4.6] $(E, +, \leq)$ é semigrupo ordenado que satisfaz N1, N2, N3, N4
+    então $(E, +, \leq)$ é ordenadamente isomorfo a $\N$.
+\end{description}
+
+\noindent{\Large \bf 3 - Números Inteiros - $\Z$}
+
+\noindent{\Large \bf 3.1 - Construção do conjunto dos números inteiros}
+
+Propriedades de $\N$:
+
+\begin{description}
+  \begin{multicols}{2}
+    \item[(A1) \emph{Assoc.}] $(a+b)+c = a+(b+c)$;
+    \item[(A2) \emph{Comut.}] $a+b=b+a$;
+    \item[(A3) \emph{E. Neutro}] $\exists 0 \in A | a+0=a$;
+    \item[(LCA)] $a+b=a+c \to b=c$;
+    \item[(M1)] $(a\times b) \times c = a \times (b \times c)$
+    \item[(M2)] $a \times b = b \times a$
+    \item[(M3)] $\exists 1 \in K | a \times 1 = a$;
+    \item[(D)] $a \times (b+c) = ab + ac$;
+  \end{multicols}
+\end{description}
+
+Seja $E = \N \times \N = \{ (a,b) | a,b \in \N \}$.
+
+\begin{description}
+  \item[\defi 33 (Rel. de equiv.)] Dados $(a,b),(c,d) \in E$: \\
+    $(a,b)R(c,d) \iff a+d=b+c$
+  \item[\defi 34 (Adição em $\Z$)] Dados $(a,b),(c,d) \in Z := E/R$: \\
+    $\overline{(a,b)} + \overline{(c,d)} = \overline{(a+c, b+d)}$ \\
+    Bem definida.
+  \item[\teor 3.1.3] O conj. $(Z, +)$ é monóide comutativo
+  \item[\prop 3.1.4] O conj. $(Z, +)$ satisfaz as propriedades:
+    \begin{description}
+      \item[(P1)] Dado $\overline{(a,b)} \in Z, \exists ! -\overline{(a,b)}$
+        (lê-se: simétrico de $\overline{(a,b)}$);
+      \item[(P2)] Todo el. neutro de $Z$ é regular para a soma \emph{(LCA)};
+      \end{description}
+    \item[\defi 35] (multiplicação em $\Z$) Dados $\overline{(a,b)},
+      \overline{(c,d)} \in \Z$: \\
+      $\overline{(a,b)} \times \overline{(c,d)} = \overline{(ac+db, ad+bc)}$ \\
+      Bem definida.
+    \item[\defi 36] Dados $x=\overline{(a,b)}$ e $y = \overline{(c,d)} \in Z$: \\
+      $x \leq y \iff a+d\leq b+c$ \\
+      Por exemplo, um $x=\overline{(a,b)} \in Z, x\leq 0' \iff a\leq b$
+    \item[\teor 3.1.8] A rel. $\leq$ é ordem total em $Z$ compatível com adição (ou
+      seja, $(Z, +, \leq)$ é monóide ordenado).
+    \item[\teor 3.1.9] Dados $x,y,z \in Z$ vale:
+      \begin{description}
+        \begin{multicols}{4}
+          \item[(a)] $x<y$
+          \item[(b)] $x+z < y+z$
+          \item[(c)] $-y<-x$
+          \item[(d)] $x-y<0'$
+        \end{multicols}
+      \end{description}
+    \item[\teor 3.1.10] Seja $x=\overline{(a,b)}$ e $y=\overline{(c,d)}$,
+      $z=\overline{(e,f)} \in Z$. Se $x<y$ e $0'<z$, então $x\times z < y
+      \times z$
+    \item[\teor 3.1.11] Em $Z$ vale:
+      \begin{description}
+        \item[(i)] $0'<x$ e $0'<y \to 0' < x\times y$
+        \item[(ii)] $x<0'$ e $y<0' \to 0' < x\times y$
+        \item[(iii)] $x<0'$ e $0'<y \to x\times y < 0'$
+      \end{description}
+    \item[\teor 3.1.17] A aplicação $f:\N \to N'$ definida por $f(n) =
+      \overline{(n, 0)}$ é isomorfismo ordenado, e portanto, $(N', +, \leq)$ e
+      $\N$ são ordenadamente isomorfos.
+\end{description}
+
+\noindent{\Large \bf 3.2 Aplicações à teoria elementar dos números}
+
+\begin{description}
+  \item[\defi 41] Dados $a,b \in \Z$, $a$ é divisor de $b$ se, e somente
+    se existe um $c \in \Z$ tal que $b=ac$. \\
+    Notação $a|b$.
+  \item[\prop 3.2.2] Dados $a,b,c \in \Z$, vale:
+    \begin{enumerate}
+      \item $a|a$ (\emph{reflexiva});
+      \item $a|b$ e $b|a \iff a = \pm b$;
+      \item $a|b$ e $b|c \to a|c$ (\emph{transitiva});
+      \item $a|b$ e $a|c \to a|(b\pm c)$;
+      \item Suponhamos que $a|(b\pm c)$. Então $a|b \iff a|c$;
+    \end{enumerate}
+  \item[\prop 3.2.3] Seja $a,b \in \Z$ e $n\in \N$. Então:
+    \begin{enumerate}
+      \item $(a-b)|(a^n -b^n)$, $\forall n \in \N$;
+      \item $(a+b)|(a^{2n+1}+b^{2n+1})$, $\forall n \in \N$;
+      \item $(a+b)|(a^{2n}-b^{2n})$, $\forall n \in \N$;
+    \end{enumerate}
+  \item[\defi 44]:
+    \begin{description}
+    \item[(i)] Dizemos que um número $p \in \Z-\{0, \pm 1\}$ é primo, se
+      e somente se $D(p) = \{\pm 1, \pm p\}$.
+    \item[(ii)] Dizemos que um número $a\in \Z-\{0, \pm 1\}$ é composto,
+      se e somente se existe $b,c\in \Z$ divisor próprio de $a$ (ou
+      seja, $a=bc$ com $b,c\in \Z-\{0,\pm 1\}$.
+    \end{description}
+  \item[\defi 45] Sejam $a,b,m \in \Z$, com $m\neq 0$. $a$ é congruente a
+    $b$ módulo $m$ se, e somente se $m|(a-b)$.
+  \item[\coro 3.2.14] Seja $a,b,c,d \in \Z$. Se $a\equiv b mod. m$ e $c
+    \equiv d mod. m$, então $a+c\equiv(b+d) mod. m$ e $ac\equiv bd mod. m$.
+  \item[\coro 3.2.15] Seja $a,b \in \Z$. Se $a\equiv b mod. m$, então $a^n
+    \equiv b^n mod. m$, $\forall n \in \N$.
+\end{description}
+
+\noindent{\Large \bf 4 - Construção dos Números Racionais - $\Q$}
+
+\noindent{\Large \bf Propriedades}
+
+\begin{description}
+  \begin{multicols}{2}
+    \item[(A1) \emph{Assoc.}] $(a+b)+c = a+(b+c)$;
+    \item[(A2) \emph{Comut.}] $a+b=b+a$;
+    \item[(A3) \emph{E. Neutro}] $\exists 0 \in A | a+0=a$;
+    \item[(A4) \emph{E. Oposto}] $\forall a \in A$ \\ $\exists -a \in A|a+(-a)=0$;
+      \columnbreak
+    \item[(M1)] $(a\times b) \times c = a \times (b \times c)$
+    \item[(M2)] $a\times b = b \times a$
+    \item[(M3)] $\exists 1 \in K$ tal que $a \times 1 = a$;
+    \item[(M4)] $a\times a^{-1} = 1 (a\neq 0)$;
+    \item[(D1)] $a\times (b+c) = ab + ac$;
+    \item[(D2)] $(b+c) \times a = ba + ca$;
+  \end{multicols}
+\end{description}
+
+\noindent{\Large \bf 4.1 - Anéis e Corpos}
+
+\begin{description}
+  \item[\defi 47] $(A, +, \times)$ é \textbf{Anel} \emph{se, e somente se}: \\
+    (A1) (A2) (A3) (A4) (M1) (D1) (D2)
+  \item[\defi 48] Seja $(A, +, \times)$ um anel:
+    \begin{itemize}
+      \item \textbf{Anel comutativo}: (M2)
+      \item \textbf{Anel com unidade}: (M3)
+    \end{itemize}
+  \item[\defi 49] $(A, +, \times)$ é \textbf{Anel de Integridade}, \emph{se, e
+    somente se}:
+    \begin{itemize}
+      \item $(A, +, \times)$ é anel comutativo com unidade;
+      \item Dados $a, b \in A$, $a \times b = 0 \iff a = 0$ ou $b = 0$;
+    \end{itemize}
+  \item[\defi 50] O anel $(A, +, \times)$ é \textbf{Corpo}, \emph{se, e somente
+    se}:
+    \begin{itemize}
+      \item $(A, +, \times)$ é anel comutativo com unidade;
+      \item (M4)
+    \end{itemize}
+  \item[\defi 51] Seja $K$ um corpo. Definimos quociente de $a$ por $b$: Dados $a, b
+    \in K$ com $b \neq 0$: \\
+    $\frac{a}{b} = a \times b^{-1}$
+  \item[\lema 4.1.6] Dados $a, b \in K^*$, $(ab)^{-1} = a^{-1} b^{-1}$
+  \item[\teor 4.1.7] Sejam $a, b, c$ e $d \in K (b \neq 0$ e $d \neq 0)$:
+    \begin{multicols}{3}
+      \begin{enumerate}
+        \item $\frac{a}{b} = \frac{c}{d} \iff ad=bc$;
+        \item $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{db}$
+        \item $-\frac{a}{b} = \frac{-a}{b} = \frac{a}{-b}$
+        \item $\frac{a}{b}\times \frac{c}{d} = \frac{ac}{bd}$
+        \item $(\frac{a}{b})^{-1} = \frac{b}{a}$
+        \item $\frac{a}{1} = a$
+        \item $\frac{a}{b} = 0 \iff a = 0$
+      \end{enumerate}
+    \end{multicols}
+\end{description}
+
+\noindent{\Large \bf 4.2 Corpo de frações de um anel de integridade}
+
+Seja $A$ um anel de integridade e $E = A \times A^*$.
+
+\begin{description}
+  \item[\defi 53] $(a,b),(c,d) \in E$: \\
+    $(a,b)R(c,d) \iff ad = bc$ \emph{(Rel. de Equivalência)}
+  \item[\defi 54] Operações bem definidas em $K$:
+    \begin{itemize}
+      \item Adição: $\overline{(a, b)} + \overline{(c, d)} = \overline{(ad + bc, bd)}$
+      \item Multiplicação: $\overline{(a, b)} \times \overline{(c, d)} =
+        \overline{(ac, bd)}$
+    \end{itemize}
+\end{description}
+
+\noindent{\Large \bf 5. Números Reais - $\R$}
+
+Seja $(K, +, \times)$ um corpo e $P \subset K$.
+
+\begin{description}
+  \item[(P1)] $\forall x, y \in P$, $x+y \in P$ e $x \times y \in P$
+  \item[(P2)] Dado $x \in K$, ou $x \in P$, ou $x=0$, ou $-x \in P$
+\end{description}
+
+$P$ é o conjunto dos el. positivos de $K$.
+
+\begin{description}
+  \item[\teor 5.1.2] Seja $K$ um corpo que satisfaz (P1) e (P2):
+    \begin{description}
+      \item[(i)] $\leq$ define uma rel. de ordem total sobre $K$;
+      \item[(ii)] $\leq$ é compatível com adição;
+      \item[(iii)] $\leq$ é compatível com multiplicação;
+    \end{description}
+  \item[\teor 5.1.5] Se $(K, +, \times)$ é um corpo totalmente ordenado e a ordem
+    sobre $K$ satisfaz (ii) e (iii), então existe $P \subset K$ que satisfaz
+    (P1) e (P2);
+  \item[\defi 57 (Valor absoluto)] Seja um corpo $K$. O valor absoluto $x \in K$, $|x|$:
+    \[ |x| = max\{x, -x\} = \left\{ 
+        \begin{array}{l l}
+          \text{$x$, se $x \geq 0$} \\
+          \text{$-x$, se $x < 0$}
+      \end{array} \right.\]
+    \item[\prop 5.1.8] Dado $x \in K$:
+      \begin{multicols}{3}
+        \begin{description}
+          \item[(i)] $0 \leq |x|$;
+          \item[(ii)] $|x| = 0 \iff x = 0$;
+          \item[(iii)] $x \leq |x|$
+          \item[(iv)] $|-x| = |x|$
+          \item[(v)] $-|x| \leq x \leq |x|$
+        \end{description}
+      \end{multicols}
+    \item[\prop 5.1.8] Dado $x \in K$:
+      \begin{enumerate}
+        \item Se $y >0$, então $|x| \leq y \iff -y \leq x \leq y$
+        \item Dados $x, y \in K$, $|x+y| \leq |x| + |y|$
+        \item Dados $x, y \in K$, $|xy| = |x||y|$
+      \end{enumerate}
+    \item[\defi 58 (Invervalo)] Seja $K$ um corpo ordenado. Dizemos que um conjunto $I
+      \subseteq K$ é um \textbf{intervalo} em $K$, \emph{se, e somente se}, para
+      quaisquer $a,b,x \in K$, se $a,b \in I$, e $a < x < b$ implicar que $x \in
+      I$
+  \end{description}
+
+\noindent{\Large \bf 5. Números Reais - $\R$}
+
+\begin{description}
+  \item[\prop 5.2.1] Não existe $x \in \Q$ tal que $x^2 = x$
+  \item[\defi 59] O subconjunto $\alpha \subset \Q$ é um corte \emph{se,
+    e somente se}:
+    \begin{description}
+      \item[(i)] $\alpha$ contém pelo menos um número racional, mas não todos:
+        $\alpha \neq \varnothing$ e $\alpha \neq \Q$;
+      \item[(ii)] Dado $p,q \in \Q$, $q < p$ e $p \in \alpha$, então $q
+        \in \alpha$;
+      \item[(iii)] em $\alpha$ não existe racional máximo;
+      \item[(*)] não tem cota inferior.
+    \end{description}
+  \item[\obse] Dados $\alpha, \beta \in R$, temos que $\alpha = \beta$
+    \emph{se, e somente se}, $\alpha \subseteq \beta$ e $\beta \subseteq
+    \alpha$.
+  \item[\prop 5.2.4] Sejam $\alpha \in \R$ e $q \in \Q$. Se $q
+    \notin \alpha$, então $p < q, \forall p \in \alpha$
+  \item[\prop 5.2.5] Seja $r \in \Q$ e seja $\alpha = { p \in \Q
+    | p < r}$. Então $\alpha \in R$ e $r$ é cota superior mínima de $\alpha$.
+\end{description}
+
+\noindent{\Large \bf Notas}
+
+\begin{description}
+  \item[Semigrupo]: (A1);
+  \item[Monóide]: (A1), (A3);
+  \item[Monóide comutativo]: (A1), (A2), (A3);
+  \item[Anel]: (A1), (A2), (A3), (A4), (M1), (D1), (D2);
+  \item[Anel comutativo]: Anel e (M2);
+  \item[Anel com unidade]: Anel e (M3);
+  \item[Anel de integridade]:
+    \begin{itemize}
+      \item Anel comutativo e com unidade;
+      \item $\forall a,b \in A ab=0 \iff a=0$ ou $b=0$;
+    \end{itemize}
+  \item[Corpo]:
+    \begin{itemize}
+      \item Anel comutativo e com unidade;
+      \item (M4)
+    \end{itemize}
+\end{description}
+
+xxx:
+
+\begin{itemize}
+  \item $a|b \iff b=ac$;
+  \item $a \equiv b mod m \iff a-b = km \iff m|(a-b)$;
+  \item $x\leq y \to x+z \leq y+z$ (compatível);
+  \item N3: $b\leq a \to a=b+c$;
+  \item $b+c =a \to b\leq a$;
+  \item Inteiros: $(a,b), (c,d) \in \Z$
+    \begin{itemize}
+      \item $(a,b)R(c,d)\iff a+d=b+c$
+      \item $\overline{(a,b)} + \overline{(c,d)} = \overline{(a+c, b+d)}$ (BD);
+      \item $\overline{(a,b)} \times \overline{(c,d)} = \overline{(ac+bd, ad+bc)}$ (BD);
+    \end{itemize}
+  \item Racionais: $(A, +, \times)$ anel de integrigade $E=A\times A^*$
+    \begin{itemize}
+      \item $(a,b)R(c,d) \iff ad=bc$
+      \item $\overline{(a,b)} + \overline{(c,d)} \iff \overline{(ad+bc, bd)}$
+      \item $\overline{(a,b)} \times \overline{(c,d)} \iff \overline{(ac, bd)}$
+    \end{itemize}
+\end{itemize}
+
+\end{document}
